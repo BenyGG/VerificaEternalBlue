@@ -42,11 +42,13 @@ WshShell.run "control.exe /name Microsoft.WindowsUpdate",0,True
 CreateObject("WScript.Shell").Popup "Desactivando SMBV1 de tu Sistema! ", 5, " Desactivando!", vbOKOnly
 WshShell.run "sc.exe config lanmanworkstation depend= bowser/mrxsmb20/nsi",0,True
 WshShell.run "sc.exe config mrxsmb10 start= disabled",0,True
+	'Fueron Desactivas estas Opciones ya que puede que alguna oficina o entidad pueda ocupar este Script ,
+	'Pero si estas en tu casa puedes Activarlas!
 ' Desactivar SMBV2
-CreateObject("WScript.Shell").Popup "Desactivando SMBV2 de tu Sistema! ", 5, " Desactivando!", vbOKOnly
-WshShell.run "sc.exe config lanmanworkstation depend= bowser/mrxsmb10/nsi  ",0,True
-WshShell.run "sc.exe config mrxsmb20 start= disabled",0,True
+'CreateObject("WScript.Shell").Popup "Desactivando SMBV2 de tu Sistema! ", 5, " Desactivando!", vbOKOnly
+'WshShell.run "sc.exe config lanmanworkstation depend= bowser/mrxsmb10/nsi  ",0,True
+'WshShell.run "sc.exe config mrxsmb20 start= disabled",0,True
 ' Desactivar SMBV3
-CreateObject("WScript.Shell").Popup "Desactivando SMBV3 de tu Sistema! ", 5, " Desactivando!", vbOKOnly
-WshShell.run "sc.exe config lanmanworkstation depend= bowser/mrxsmb10/mrxsmb20/nsi  ",0,True
-WshShell.run "sc.exe config mrxsmb20 start= auto",0,True
+'CreateObject("WScript.Shell").Popup "Desactivando SMBV3 de tu Sistema! ", 5, " Desactivando!", vbOKOnly
+'WshShell.run "sc.exe config lanmanworkstation depend= bowser/mrxsmb10/mrxsmb20/nsi  ",0,True
+'WshShell.run "sc.exe config mrxsmb20 start= auto",0,True
