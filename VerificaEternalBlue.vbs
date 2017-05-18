@@ -33,15 +33,19 @@ For Each kb In KBList
 	End If
 Next
 
-MsgBox("Su Computadora NO ESTA PROTEGIDA ANTE EternalBlue, Por favor Actualice su equipo" & vbcrlf & vbcrlf & "Se Abrira el Centro de Actualizaciones por favor Pinche en buscar Actualizaciones, y Instale.")
+MsgBox("Su Computadora NO ESTA PROTEGIDA ANTE EternalBlue, Por favor Actualice su equipo" & vbcrlf & vbcrlf & "Se Forzara al Sistema para Instalar Actualizaciones Ahora!")
 
 ' Ejecucion de Windows Update
 ' Opcion para buscar Actualizaciones!
-WshShell.run "control.exe /name Microsoft.WindowsUpdate",0,True
+'WshShell.run "control.exe /name Microsoft.WindowsUpdate",0,True  //Esta Opcion Ejecutaba la GUI de Windows Update
+'Forzar al Sistema a Actualizar!
+WshShell.run ("wuauclt /detectnow")
 ' Desactivar SMBv1
 CreateObject("WScript.Shell").Popup "Desactivando SMBV1 de tu Sistema! ", 5, " Desactivando!", vbOKOnly
 WshShell.run "sc.exe config lanmanworkstation depend= bowser/mrxsmb20/nsi",0,True
 WshShell.run "sc.exe config mrxsmb10 start= disabled",0,True
+'Forzamos al sistema por powershell! a desactivar el SMBV1
+WshShell.run ("powershell Set-ItemProperty -Path “HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters” SMB1 -Type DWORD -Value 0 -Force")
 	'Fueron Desactivas estas Opciones ya que puede que alguna oficina o entidad pueda ocupar este Script ,
 	'Pero si estas en tu casa puedes Activarlas!
 ' Desactivar SMBV2
